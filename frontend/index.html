@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OSINT Username Finder</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header>
+  <h1>🔍 OSINT Username Finder</h1>
+  <p class="sub">Verificação de username em múltiplas plataformas</p>
+</header>
+
+<section class="panel">
+  <form id="search-form">
+    <div class="row">
+      <input id="username" placeholder="Digite o username (ex: johndoe)" autocomplete="off" required>
+      <button id="btn-search" type="submit">Buscar</button>
+    </div>
+
+    <div class="filters">
+      <div>
+        <strong>Categorias:</strong>
+        <div id="categories" class="chips"></div>
+      </div>
+      <label class="toggle">
+        <input type="checkbox" id="nsfw"> Incluir conteúdo adulto (18+)
+      </label>
+    </div>
+  </form>
+
+  <div id="progress-wrap" class="hidden">
+    <div id="progress-bar"><div id="progress-fill"></div></div>
+    <div class="counters">
+      <span>✅ Encontrados: <b id="c-found">0</b></span>
+      <span>❌ Não encontrados: <b id="c-nf">0</b></span>
+      <span>⚠️ Erros: <b id="c-err">0</b></span>
+      <span>🔄 Total: <b id="c-total">0</b>/<b id="c-max">0</b></span>
+    </div>
+  </div>
+
+  <div id="extras" class="hidden">
+    <div class="extras-grid">
+      <div>
+        <h4>🔗 Variações sugeridas</h4>
+        <div id="variations" class="chips small"></div>
+      </div>
+      <div>
+        <h4>🎯 Dorks Google</h4>
+        <div id="dorks" class="chips small"></div>
+      </div>
+      <div>
+        <h4>🔎 Buscar em</h4>
+        <div id="engines" class="chips small"></div>
+      </div>
+      <div>
+        <h4>🖼️ Gravatar</h4>
+        <a id="gravatar" href="#" target="_blank">Consultar</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions hidden" id="actions">
+    <button data-fmt="json">⬇️ JSON</button>
+    <button data-fmt="csv">⬇️ CSV</button>
+    <button data-fmt="md">⬇️ Markdown</button>
+    <button data-fmt="html">⬇️ HTML</button>
+    <button id="btn-copy">📋 Copiar</button>
+    <button id="btn-new">🆕 Nova busca</button>
+  </div>
+</section>
+
+<aside id="history-panel">
+  <h3>🕓 Histórico</h3>
+  <ul id="history-list"></ul>
+</aside>
+
+<main id="results"></main>
+
+<footer>
+  <strong>⚠️ Aviso legal:</strong> Ferramenta destinada a usos legítimos — verificação da própria identidade,
+  pesquisa acadêmica, investigações autorizadas e segurança defensiva. Respeite os Termos de Uso dos sites,
+  robots.txt e a LGPD/GDPR. Não utilize para perseguir, assediar ou coletar dados de terceiros sem consentimento.
+</footer>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
